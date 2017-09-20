@@ -31,7 +31,7 @@ define(['jquery','template','cookie'],function($,template){
 
 
 //        退出登录
-	$('#logout').click(function(){
+	$('#logoutBtn').click(function(){
 		$.ajax({
 			type:'post',
 			url:'/api/logout',

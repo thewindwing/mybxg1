@@ -1,3 +1,4 @@
+
 //模块化配置
 require.config({
     baseUrl:'/public/assets',
