@@ -3,10 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>学IT - 后台管理系统</title>
-    <link rel="stylesheet" href="/public/assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/public/assets/font-awesome/css/font-awesome.css">
-    <link rel="stylesheet" href="/public/assets/nprogress/nprogress.css">
-    <link rel="stylesheet" href="/public/less/index.css">
+    <?php include('./views/common/style.html'); ?>
 </head>
 <body>
     <!-- 登录 -->
@@ -32,27 +29,10 @@
             </form>
         </div>
     </div>
-    
-    <script src="/public/assets/jquery/jquery.min.js"></script>
-    <script src="/public/assets/bootstrap/js/bootstrap.min.js"></script>
-    <script>
 
-        $('#loginBtn').click(function(){           
-             $.ajax({
-                url:'/api/login',
-                type:'post',
-                dataType:'json',
-                data:$('form').serialize(),
-                success:function(data){
-                    console.log(data,1);
-                    if(data.code==200){
-                        location.href='main/index';
-                    }
-                }
-             });
-             console.log(1);
-            return false;
-        })
+    <?php include('./views/common/script.html'); ?>
+    <script>
+        require(['login']);
     </script>
 </body>
 </html>
