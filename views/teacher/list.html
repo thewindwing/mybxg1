@@ -41,26 +41,16 @@
                                 <th>编号</th>
                                 <th>姓名</th>
                                 <th>昵称</th>
-                                <th>年龄</th>
+                                <th>入职日期</th>
                                 <th>性别</th>
                                 <th>手机号码</th>
                                 <th>操作</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>赵玉川</td>
-                                <td>布头儿</td>
-                                <td>28</td>
-                                <td>男</td>
-                                <td>15901256171</td>
-                                <td>
-                                    <a href="#teacherModal" data-toggle="modal" class="btn btn-info btn-xs">查 看</a>
-                                    <a href="./teacher_add.html" class="btn btn-info btn-xs">编 辑</a>
-                                    <a href="javascript::" class="btn btn-warning btn-xs">注 销</a>
-                                </td>
-                            </tr>
+                        <tbody id="teacherInfo">
+
+                           <!------------------动态创建-------------->
+
                         </tbody>
                     </table>
                 </div>
@@ -120,5 +110,31 @@
     </div>
 
    <?php include('./views/common/script.html'); ?>
+    <script type="text/template" id="tpl">
+    {{each result}}
+    <tr>
+        <td>{{$index+1}}</td>
+        <td>{{$value.tc_name}}</td>
+        <td>{{$value.tc_roster}}</td>
+        <td>{{$value.tc_join_date}}</td>
+        <td>
+            {{if $value.tc_status==1}}
+            女
+            {{else}}
+            男
+            {{/if}}
+        </td>
+        <td>{{保密}}</td>
+        <td>
+            <a href="#teacherModal" data-toggle="modal" class="btn btn-info btn-xs">查 看</a>
+            <a href="./teacher_add.html" class="btn btn-info btn-xs">编 辑</a>
+            <a href="javascript:;" class="btn btn-warning btn-xs">注 销</a>
+        </td>
+    </tr>
+    {{/each}}
+</script>
+    <script>
+        require(['teacherList']);
+    </script>
 </body>
 </html>
