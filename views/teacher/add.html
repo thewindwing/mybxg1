@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学IT - 后台管理系统</title>
+    <?php include("./views/common/style.html"); ?>
+    <link rel="stylesheet" href="/public/assets/bootstrap-datepicker/css/bootstrap-datepicker.css">
+</head>
+<body>
+    
+    <!-- 侧边栏 -->
+    <?php include("./views/common/aside.html"); ?>
+    <!-- 主体 -->
+    <div class="main">
+        <div class="container-fluid">
+            <!-- 头部 -->
+            <?php include("./views/common/header.html"); ?>
+            <div class="body teacher" id="teacherInfo">
+                <!-- 面包屑 -->
+
+               <!------------动态创建------------------>
+
+            </div>
+        </div>
+    </div>
+
+    <!--动态创建讲师编辑和添加信息-->
+    <script type="text/template" id="teacherTpl">
+    <ol class="breadcrumb">
+        <li><a href="/teacher/list">讲师管理</a></li>
+        <li class="active">{{operate}}</li>
+    </ol>
+    <div class="teacher-add">
+        <form action="" class="form-horizontal col-xs-offset-2" id="teacherForm">
+            <input type="hidden" value="{{tc_id}}" name="tc_id">
+            <div class="form-group">
+                <label for="" class="col-xs-3 control-label">姓名</label>
+                <div class="col-xs-4">
+                    <input type="text" class="form-control input-sm" placeholder="讲师名称" value="{{tc_name}}" name="tc_name">
+                </div>
+            </div>
+            {{if !tc_id}}
+            <div class="form-group">
+                <label for="" class="col-xs-3 control-label">密码</label>
+                <div class="col-xs-4">
+                    <input type="password" class="form-control input-sm" name="tc_pass">
+                </div>
+            </div>
+            {{/if}}
+            <div class="form-group">
+                <label for="" class="col-xs-3 control-label">入职时间</label>
+                <div class="col-xs-4">
+                    <input type="text" class="form-control input-sm" value="{{tc_join_date}}" name="tc_join_date" data-provide="datepicker" data-date-language="zh-CN" data-date-format="yyyy-mm-dd">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="" class="col-xs-3 control-label">类型</label>
+                <div class="col-xs-2">
+                    <select name="" class="form-control input-sm">
+                        <option value="1" name="tc_type" {{if tc_type==1}}selected{{/if}}  >讲师</option>
+                        <option value="0" name="tc_type" {{if tc_type==0}}selected{{/if}}>管理员</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="" class="col-xs-3 control-label">性别</label>
+                <div class="col-xs-4">
+                    <label class="radio-inline">
+                        <input type="radio" {{if tc_gender==0}}checked{{/if}} name="tc_gender" value="0"> 男
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" {{if tc_gender==1}}checked{{/if}} name="tc_gender" value="1"> 女
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-7">
+                    <input type="button" class="btn btn-success btn-sm pull-right" value="{{if tc_id}}修改{{else}}添加{{/if}}" id="teacherBtn">
+                </div>
+            </div>
+        </form>
+    </div>
+    </script>
+
+    <?php include("./views/common/script.html"); ?>
+    <script>
+        require(['teacherAdd']);
+    </script>
+</body>
+</html>

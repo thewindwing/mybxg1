@@ -7,7 +7,7 @@ define(['jquery','template','bootstrap'],function($,template){
            success:function(data){
                console.log(data,1);
                if(data.code==200){
-                   $('#teacherInfo').html(template('tpl',data));
+                   $('#teacherInfo').html(template('tpl',{list:data.result}));
                }
 
            //    启用和注销功能
@@ -22,8 +22,9 @@ define(['jquery','template','bootstrap'],function($,template){
                        data:{tc_id:tcId,tc_status:tcStatus},
                        dataType:'json',
                        success:function(data){
-                           // console.log(data);
+                           console.log(data);
                             if(data.code==200){
+
                                 td.attr('data-status',data.result.tc_status);
                                 if(data.result.tc_status==0){
                                  that.html('注销');
