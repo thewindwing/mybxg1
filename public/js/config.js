@@ -11,11 +11,14 @@ require.config({
         language:'bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min',
         validate:'validate/jquery-validate.min',
         form:'jquery-form/jquery.form',
+        uploadify:'uploadify/jquery.uploadify.min',
+        region:'jquery-region/jquery.region',
         util:'../js/util',
         common:'../js/common',
         login:'../js/login',
         teacherList:'../js/teacherList',
-        teacherAdd:'../js/teacherAdd'
+        teacherAdd:'../js/teacherAdd',
+        settings:'../js/settings'
     },
     shim:{
         bootstrap:{
@@ -25,6 +28,9 @@ require.config({
             deps:['jquery','bootstrap']
         },
         validate:{
+            deps:['jquery']
+        },
+        uploadify:{
             deps:['jquery']
         }
     }

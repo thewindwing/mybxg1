@@ -26,17 +26,17 @@ define(['jquery','util','template','datepicker','language','validate','form'],fu
 
 //    添加或修改讲师信息---插件做
     function submitForm(url){
-        $('#teacherForm').validate({
-            sendForm:false,
-            valid:function(){
+        $('#teacherForm').validate({//验证插件
+            sendForm:false,//阻止submit的自动提交
+            valid:function(){//全部通过验证时的回调函数
                 $(this).ajaxSubmit({//自动提交表单数据不用再data了
-                    type:'post',
+                    type:'post',//后台提交数据插件
                     url:url,
                     dataType:'json',
                     success:function(data){
                         if(data.code==200){
-                            console.log(1)
-                            // location.href='teacher/list';
+                            // console.log(1)
+                            location.href='/teacher/list';
                         }
                     }
                 });
