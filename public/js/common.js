@@ -19,15 +19,15 @@ define(['jquery','template','cookie'],function($,template){
 
 	//动态创建头像
 	var loginInfo=$.cookie('loginInfo');
+
 	loginInfo=loginInfo&&JSON.parse(loginInfo);
 	var tpl='<div class="avatar img-circle"><img src="{{tc_avatar}}"></div><h4>{{tc_name}}</h4>';
-//        方法一
+//        方法一‘
 //        var render=template.compile(tpl);
 //        var html=render(loginInfo);
 //       或 方法二
 	var html=template.render(tpl,loginInfo);
 	$('.aside .profile').html(html);
-
 
 
 //        退出登录

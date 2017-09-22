@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="assets/jquery/jquery.min.js"></script>
+    <link rel="stylesheet" href="assets/bootstrap-datepicker/css/bootstrap-datepicker.css">
+    <script src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="assets/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+</head>
+<body>
+<!--<input type="text" data-provide="datepicker"  data-date-language="zh-CN" data-date-format="yyyy-mm-dd" data-date-end-date="-3d" data-date-start-date="0d">-->
+<input type="text" id="input">
+<script>
+    $('#input').datepicker({
+        language:'zh-CN',
+        format:'yyyy/mm/dd',
+        todayBtn:'licked'
+
+    });
+//    $('#input').datepicker('update','2011-03-05')
+</script>
+</body>
+</html>
