@@ -17,6 +17,7 @@ define(['jquery','template','cookie'],function($,template){
 	}
 
 
+
 	//动态创建头像
 	var loginInfo=$.cookie('loginInfo');
 
@@ -41,5 +42,15 @@ define(['jquery','template','cookie'],function($,template){
 			}
 		})
 	});
+
+//	侧边栏课程管理切换
+	$('.navs ul').prev('a').click(function(){
+		console.log($(this))
+		$(this).next('ul').slideToggle();
+
+	});
+	/*$('#toggle').click(function(){
+		console.log($(this))
+		$(this).next('ul').slideToggle();})*/
 
 });

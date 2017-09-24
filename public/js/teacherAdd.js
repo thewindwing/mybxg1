@@ -1,5 +1,7 @@
 define(['jquery','util','template','datepicker','language','validate','form'],function($,util,template){
 
+   $('.navs ul a[href="/teacher/list"]').addClass('active');
+
     //编辑讲师信息
     var tcId=util.qs('tc_id');
     // console.log(tcId)
@@ -26,6 +28,7 @@ define(['jquery','util','template','datepicker','language','validate','form'],fu
 
 //    添加或修改讲师信息---插件做
     function submitForm(url){
+
         $('#teacherForm').validate({//验证插件
             sendForm:false,//阻止submit的自动提交
             valid:function(){//全部通过验证时的回调函数

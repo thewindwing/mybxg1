@@ -1,5 +1,6 @@
-define(['jquery','template','bootstrap'],function($,template){
-
+define(['jquery','template','util','bootstrap'],function($,template,util){
+        util.setMenu(location.pathname);//显示侧边栏对应的高亮显示
+    
        $.ajax({
            type:'get',
            url:'/api/teacher',

@@ -16,6 +16,9 @@ define(['jquery'],function($){
               });
           }
         return val;
-      }
+      },
+       setMenu:function(path){//根据跳转页面的a的url和跳转地址栏的URL进行匹配
+           $('.navs ul a[href="'+path+'"]').addClass('active').closest('ul').show();//当点击a时，对应的背景高亮，且若是下拉列表时，其父元素处于展开状态
+       }
    } ;
 });
