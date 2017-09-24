@@ -13,6 +13,7 @@ require.config({
         form:'jquery-form/jquery.form',
         uploadify:'uploadify/jquery.uploadify.min',
         region:'jquery-region/jquery.region',
+        ckeditor:'ckeditor/ckeditor',//这里不加后缀，不然会报错
         util:'../js/util',
         common:'../js/common',
         login:'../js/login',
@@ -32,6 +33,9 @@ require.config({
         },
         uploadify:{
             deps:['jquery']
+        },
+        ckeditor:{
+            exports:'CKEDITOR' //只依赖或配置一个文件时可以不写数组，多个时要写数组的形式
         }
     }
 });

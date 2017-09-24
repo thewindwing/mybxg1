@@ -1,4 +1,4 @@
-define(['jquery','template','uploadify','region'],function($,template){
+define(['jquery','template','ckeditor','uploadify','region','validate','form','datepicker','language'],function($,template,CKEDITOR){
     $.ajax({
         type:'get',
         url:'/api/teacher/profile',
@@ -24,7 +24,6 @@ define(['jquery','template','uploadify','region'],function($,template){
                     if(obj.code==200){
                         $('.preview img').attr('src',obj.result.path);
                     }
-
                 }
             });
             
@@ -32,6 +31,55 @@ define(['jquery','template','uploadify','region'],function($,template){
             $('#pwd').region({
                url:'/public/assets/jquery-region/region.json'
             });
+            
+        //    富文本   必须用id
+            CKEDITOR.replace('editor',{
+                toolbarGroups : [
+                { name: 'clipboard', groups: [ 'clipboard', 'undo' ] },
+                { name: 'editing', groups: [ 'find', 'selection', 'spellchecker', 'editing' ] },
+                { name: 'tools', groups: [ 'tools' ] },
+                { name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
+                { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+                { name: 'colors', groups: [ 'colors' ] },
+                { name: 'about', groups: [ 'about' ] }]
+            });
+
+        //    更新个人资料
+            $('#settingForm').validate({
+                sendForm:false,
+                description:{
+                    roster:{
+                        required:'昵称不能为空'
+                    }  
+                },
+                valid:function(){//提交表单
+
+                    //根据选择的家乡地址，拼接成家乡字符串
+                  var p=$('#p').find('option:selected').text();
+                  var c=$('#c').find('option:selected').text();
+                  var d=$('#d').find('option:selected').text();
+                    var hometown=p+'|'+c+'|'+d;
+
+                    //更新富文本内容，将iframe内容变成表单数据
+                    for(var instance in  CKEDITOR.instances){
+                        CKEDITOR.instances[instance].updateElement();
+                    }
+
+                    $(this).ajaxSubmit({
+                        type:'post',
+                        url:'/api/teacher/modify',
+                        dataType:'json',
+                        data:{tc_hometown:hometown},//这里传一下表单之外的数据
+                        success:function(data){
+                            // console.log(data);
+                            if(data.code==200){
+                                // location.reload();
+                                location.href='/main/index';
+                            }
+                        }
+                    });
+                }
+            })
         }
     })
 });
