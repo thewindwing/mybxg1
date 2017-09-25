@@ -42,19 +42,17 @@
             <!-- 步聚 -->
             <ul class="forwards list-unstyled">
                 <li>
-                    <a href="/course/basic?cs_id={{cs_id}}" class="active">
-                        <b>1</b>
-                        基本信息
-                    </a>
+                    <a href="{{if tog}}/course/basic?cs_id={{cs_id}}&flag={{tog}}{{else}}/course/basic?cs_id={{cs_id}}{{/if}}" class="active"> <b>1</b> 基本信息</a>
                 </li>
                 <li>
-                    <a href="/course/picture?cs_id={{cs_id}}">
+                    <!--用于区分是编辑还是添加课程-->
+                    <a href="{{if tog}}/course/picture?cs_id={{cs_id}}&flag={{tog}}{{else}}/course/picture?cs_id={{cs_id}}{{/if}}">
                         <b>2</b>
                         课程图片
                     </a>
                 </li>
                 <li>
-                    <a href="/course/course_add_step3?cs_id={{cs_id}}">
+                    <a href="{{if tog}}/course/lesson?cs_id={{cs_id}}&flag={{tog}}{{else}}/course/lesson?cs_id={{cs_id}}{{/if}}">
                         <b>3</b>
                         课时管理
                     </a>
@@ -93,7 +91,7 @@
                     <div class="form-group">
                         <label for="" class="col-xs-2 control-label">分类</label>
                         <div class="col-xs-8">
-                            <select name="cs_cg_id" class="form-control input-sm" id="firstType">
+                            <select name="" class="form-control input-sm" id="firstType">
                                 <!--添加中需要这一项-->
                                 <option value="">请输入一级分类...</option>
                                 {{if category}}
@@ -102,7 +100,7 @@
                                 {{/each}}
                                 {{/if}}
                             </select>
-                            <select id="secondType" name="cs_id" class="form-control input-sm">
+                            <select id="secondType" name="cs_cg_id" class="form-control input-sm">
                                <!--动态渲染-->
                                 <option value="">请输入二级分类...</option>
                             </select>

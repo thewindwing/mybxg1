@@ -14,6 +14,7 @@ require.config({
         uploadify:'uploadify/jquery.uploadify.min',
         region:'jquery-region/jquery.region',
         ckeditor:'ckeditor/ckeditor',//这里不加后缀，不然会报错
+        Jcrop:'jcrop/js/Jcrop',
         util:'../js/util',
         common:'../js/common',
         login:'../js/login',
@@ -23,7 +24,9 @@ require.config({
         courseList:'../js/courseList',
         courseAdd:'../js/courseAdd',
         index:'../js/index',
-        courseBasic:'../js/courseBasic'
+        courseBasic:'../js/courseBasic',
+        coursePicture:'../js/coursePicture',
+        courseLesson:'../js/courseLesson'
     },
     shim:{
         bootstrap:{
@@ -40,6 +43,9 @@ require.config({
         },
         ckeditor:{
             exports:'CKEDITOR' //只依赖或配置一个文件时可以不写数组，多个时要写数组的形式
+        },
+        Jcrop:{
+            deps:['jquery']
         }
     }
 });

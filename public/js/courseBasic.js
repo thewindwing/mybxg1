@@ -1,5 +1,5 @@
 define(['jquery','template','util','ckeditor','validate','form'],function($,template,util,CKEDITOR){
-$('.navs ul a[href="/course/add"]').addClass('active').closest('ul').show();
+    util.setMenu('/course/add');
     //获取对应课程的id
     var csId=util.qs('cs_id');
     //操作标志位，以区分编辑还是添加课程
@@ -14,6 +14,7 @@ $('.navs ul a[href="/course/add"]').addClass('active').closest('ul').show();
             if(data.code==200){
                 if(flag){
                     data.result.operate='编辑课程';
+                    data.result.tog=1;
                 }else{
                     data.result.operate='添加课程';
                 }
@@ -33,7 +34,7 @@ $('.navs ul a[href="/course/add"]').addClass('active').closest('ul').show();
                         success:function(data){
                             console.log(data);
                             if(data.code==200){
-                                var tpl=' {{each list}}<option value="{{$value.cg_id}}"  {{if $value.cg_id==cgId}}selected{{/if}}>{{$value.cg_name}}</option>{{/each}}';
+                                var tpl=' {{each list}}<option value="{{$value.cg_id}}">{{$value.cg_name}}</option>{{/each}}';
                                var html=template.render(tpl,{list:data.result});                               
                                 $('#secondType').html(html);
                             }
@@ -58,10 +59,12 @@ $('.navs ul a[href="/course/add"]').addClass('active').closest('ul').show();
                     }
                     $(this).ajaxSubmit({
                         type:'post',
-                        url:'/api/update/basic',
+                        url:'/api/course/update/basic',
                         dataType:'json',
+                        data:{cs_id:csId},
                         success:function(data){
-                            console.log(data);
+                            // console.log(data);
+                            location.href='/course/picture?cs_id='+data.result.cs_id+'&flag='+flag;
 
                         }
                     })
