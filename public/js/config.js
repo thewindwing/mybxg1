@@ -15,6 +15,7 @@ require.config({
         region:'jquery-region/jquery.region',
         ckeditor:'ckeditor/ckeditor',//这里不加后缀，不然会报错
         Jcrop:'jcrop/js/Jcrop',
+        echarts:'echarts/echarts.min',
         util:'../js/util',
         common:'../js/common',
         login:'../js/login',
@@ -26,7 +27,8 @@ require.config({
         index:'../js/index',
         courseBasic:'../js/courseBasic',
         coursePicture:'../js/coursePicture',
-        courseLesson:'../js/courseLesson'
+        courseLesson:'../js/courseLesson',
+        state:'../js/state'
     },
     shim:{
         bootstrap:{

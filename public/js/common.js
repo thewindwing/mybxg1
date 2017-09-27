@@ -1,4 +1,4 @@
-define(['jquery','template','cookie'],function($,template){
+define(['jquery','template','cookie','state'],function($,template){
 
 	/*NProgress.start();
 
