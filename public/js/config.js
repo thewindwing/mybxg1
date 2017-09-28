@@ -28,7 +28,9 @@ require.config({
         courseBasic:'../js/courseBasic',
         coursePicture:'../js/coursePicture',
         courseLesson:'../js/courseLesson',
-        state:'../js/state'
+        state:'../js/state',
+        categoryList:'../js/categoryList',
+        categoryManage:'../js/categoryManage'
     },
     shim:{
         bootstrap:{

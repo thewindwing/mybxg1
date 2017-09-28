@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学IT - 后台管理系统</title>
+    <?php include('./views/common/style.html') ?>
+</head>
+<body>
+    <!-- 侧边栏 -->
+    <?php include('./views/common/aside.html') ?>
+    <!-- 主体 -->
+    <div class="main">
+        <div class="container-fluid">
+            <!-- 头部 -->
+            <?php include('./views/common/header.html') ?>
+            <div class="body course-category" id="manageInfo">
+
+                <!-- 动态创建 -->
+
+            </div>
+        </div>
+    </div>
+
+    <script type="text/html" id="manageTpl">
+        <ol class="breadcrumb">
+            <li><a href="/category/list">课程管理</a></li>
+            <li class="active">{{operate}}</li>
+        </ol>
+        <div class="category-add">
+            <form  class="form-horizontal" id="categoryForm">
+                <div class="form-group">
+                    <label for="" class="col-md-4 control-label">名称</label>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control input-sm" placeholder="填写分类名称" name="cg_name" value="{{cg_name}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="col-md-4 control-label">级别</label>
+                    <div class="col-md-2">
+                        <select name="cg_pid" class="form-control input-sm">
+
+                            {{each top}}
+                            <option {{if cg_id==$value.cg_id}}checked{{/if}} value="{{$value.cg_id}}">{{$value.cg_name}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="col-md-4 control-label">排序</label>
+                    <div class="col-md-1">
+                        <input type="text" class="form-control input-sm" value="{{cg_order}}" name="cg_order" data-required data-pattern="^\d+$" data-description="infoOrder" data-describedby="info">
+                    </div>
+                    <div id="info" class="col-md-2"></div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="col-md-4 control-label">是否显示</label>
+                    <div class="col-md-3">
+                        <label class="checkbox-inline">
+                            <input type="checkbox" {{if cg_is_hide==0}}checked{{/if}} name="cg_is_hide" value="0"> 是
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" {{if cg_is_hide==1}}checked{{/if}} name="cg_is_hide" value="1"> 否
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-8">
+                        <input type="submit" class="btn btn-success btn-sm pull-right" value="保存" id="categoryBtn">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </script>
+    <?php include('./views/common/script.html') ?>
+    <script type="text/javascript">
+        require(['categoryManage']);
+    </script>
+</body>
+</html>
