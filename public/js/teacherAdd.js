@@ -17,7 +17,7 @@ define(['jquery','util','template','datepicker','language','validate','form'],fu
                 //为data.result添加一个属性用来区分编辑还是添加
                 data.result.operate='编辑讲师';
                 $('#teacherInfo').html(template('teacherTpl',data.result));
-                submitForm('/api/teacher/update');
+                submitForm('/api/teacher/update',{tc_id:tcId});
             }
         });
     }else{
@@ -27,7 +27,7 @@ define(['jquery','util','template','datepicker','language','validate','form'],fu
     }
 
 //    添加或修改讲师信息---插件做
-    function submitForm(url){
+    function submitForm(url,data){
 
         $('#teacherForm').validate({//验证插件
             sendForm:false,//阻止submit的自动提交
@@ -35,6 +35,7 @@ define(['jquery','util','template','datepicker','language','validate','form'],fu
                 $(this).ajaxSubmit({//自动提交表单数据不用再data了
                     type:'post',//后台提交数据插件
                     url:url,
+                    data:data,
                     dataType:'json',
                     success:function(data){
                         if(data.code==200){
